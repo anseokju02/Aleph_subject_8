@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>안석주의 한 페이지</title>
+  <meta name="description" content="안석주의 성격, 반려견, 취미를 소개하는 개인 한 페이지입니다.">
+  <style>
+    :root{--ink:#17233b;--muted:#63708a;--paper:#f7f9fc;--line:#dce3ef;--blue:#315bd6;--mint:#bdeedd;--yellow:#ffd96a}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Pretendard,"Noto Sans KR",system-ui,sans-serif;line-height:1.7}
+    .wrap{width:min(1080px,calc(100% - 40px));margin:auto}
+    header{padding:24px 0;border-bottom:1px solid var(--line)}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;letter-spacing:-.03em}
+    nav a{color:var(--ink);text-decoration:none;font-weight:650}
+    .links{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
+    main{padding:72px 0 80px}
+    .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;min-height:420px}
+    .eyebrow{display:inline-block;padding:7px 12px;border:1px solid var(--ink);border-radius:999px;font-size:.9rem;font-weight:700;background:white}
+    h1{font-size:clamp(2.6rem,7vw,5.8rem);line-height:1.02;letter-spacing:-.065em;margin:22px 0}
+    .portrait{aspect-ratio:1;border:2px solid var(--ink);border-radius:36% 64% 55% 45%/43% 39% 61% 57%;background:var(--mint);box-shadow:18px 18px 0 var(--yellow);overflow:hidden}
+    .portrait img{width:100%;height:100%;display:block;object-fit:cover}
+    section{padding-top:72px}
+    h2{font-size:clamp(1.8rem,4vw,2.7rem);letter-spacing:-.04em;margin:0 0 24px}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    article{background:white;border:1px solid var(--line);border-radius:24px;padding:28px;min-height:230px}
+    .num{color:var(--blue);font-weight:850;font-size:.9rem}
+    h3{font-size:1.4rem;margin:40px 0 10px;letter-spacing:-.03em}
+    article p{margin:0;color:var(--muted)}
+    .pet-card{display:grid;grid-template-columns:1fr 150px;gap:22px;align-items:center}
+    .pet-illustration{width:150px;aspect-ratio:1;border-radius:22px;object-fit:cover;border:1px solid var(--line)}
+    .strength-card{grid-column:1/-1;min-height:auto}
+    .strength-list{margin:18px 0 24px;padding-left:1.35rem;color:var(--muted)}
+    .strength-list li+li{margin-top:8px}
+    button{font:inherit}
+    .detail-button,.close-button{border:1px solid var(--ink);border-radius:999px;padding:10px 16px;font-weight:750;cursor:pointer}
+    .detail-button{background:var(--ink);color:white}
+    .detail-button:hover{background:var(--blue)}
+    .detail-button:focus-visible,.close-button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+    dialog{width:min(860px,calc(100% - 32px));max-height:88vh;border:0;border-radius:28px;padding:0;color:var(--ink);box-shadow:0 24px 80px #17233b4d}
+    dialog::backdrop{background:#17233bbf;backdrop-filter:blur(4px)}
+    .dialog-inner{padding:clamp(24px,5vw,48px)}
+    .dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:28px}
+    .dialog-head h2{margin:0}
+    .close-button{background:white;color:var(--ink);white-space:nowrap}
+    .experience{border-top:1px solid var(--line);padding:28px 0}
+    .experience:last-child{padding-bottom:0}
+    .experience h3{margin:0 0 18px}
+    .sar{display:grid;grid-template-columns:64px 1fr;gap:12px 16px;margin:0}
+    .sar dt{font-weight:800;color:var(--blue)}
+    .sar dd{margin:0;color:var(--muted)}
+    .evidence{margin-top:28px;padding:20px 22px;border:1px solid #9bc7b8;border-radius:18px;background:#eefaf6}
+    .evidence strong{display:block;margin-bottom:6px;color:#17634d}
+    .evidence p{margin:0;color:var(--ink)}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.92rem}
+    footer strong{display:block;margin-bottom:4px;color:var(--ink);font-size:1rem}
+    @media(max-width:760px){nav{align-items:flex-start}.links{gap:8px 12px;font-size:.9rem}.hero{grid-template-columns:1fr;gap:34px}.portrait{width:min(75vw,320px);justify-self:center}.cards{grid-template-columns:1fr}main{padding-top:44px}section{padding-top:56px}}
+    @media(max-width:460px){.pet-card{grid-template-columns:1fr}.pet-illustration{width:100%;max-width:220px}}
+  </style>
+</head>
+<body>
+  <header><nav class="wrap" aria-label="주요 메뉴"><div class="brand">An Seok Ju</div><div class="links"><a href="#personality">성격</a><a href="#hobby">취미</a><a href="#dog">반려견</a><a href="#mbti">MBTI</a><a href="#strengths">강점</a></div></nav></header>
+  <main class="wrap">
+    <div class="hero">
+      <div><h1>Meet Seok Ju</h1><span class="eyebrow">저를 처음 만나거나 아직 잘 모르는 분들께 제가 어떤 사람인지 소개하는 공간입니다.</span></div>
+      <div class="portrait"><img src="profile-character.png" alt="안석주를 표현한 만화 캐릭터"></div>
+    </div>
+    <section aria-labelledby="intro-items-title"><h2 class="sr-only" id="intro-items-title">소개 항목</h2><div class="cards">
+      <article id="personality"><span class="num">01</span><h3>성격</h3><p>한 가지에 빠지거나 무언가 하기로 마음먹으면 끝까지 해내려고 합니다. 주변 사람들을 세심하게 살피는 편이며, 부탁을 받으면 쉽게 거절하지 못하기도 합니다.</p></article>
+      <article id="hobby"><span class="num">02</span><h3>취미</h3><p>평소 OTT나 TV로 드라마를 보는 것을 좋아합니다. 가장 좋아하는 작품은 &lt;미스터 션샤인&gt;이며, 요즘에는 수영에도 새로운 흥미가 생겼습니다.</p></article>
+      <article id="dog" class="pet-card"><div><span class="num">03</span><h3>반려견</h3><p>제 반려견의 이름은 안별이고, 푸들입니다. 언제나 제 일상에 행복과 편안함을 주는 소중한 가족입니다.</p></div><img class="pet-illustration" src="dog-character.png" alt="반려견 안별을 표현한 만화 캐릭터"></article>
+      <article id="mbti"><span class="num">04</span><h3>MBTI</h3><p>저의 MBTI는 ISFJ, ‘용감한 수호자’ 유형입니다. 주변을 세심하게 살피고 책임감을 중요하게 생각합니다.</p></article>
+      <article id="strengths" class="strength-card"><span class="num">05</span><h3>강점</h3><ol class="strength-list"><li>낯선 사람에게 먼저 다가가는 친화력</li><li>도움이 필요한 사람을 지나치지 않는 배려심</li><li>약속한 목표를 꾸준히 이어가는 책임감과 끈기</li></ol><button class="detail-button" id="open-strengths" type="button">경험 자세히 보기</button></article>
+    </div></section>
+  </main>
+  <dialog id="strength-dialog" aria-labelledby="strength-dialog-title">
+    <div class="dialog-inner">
+      <div class="dialog-head"><h2 id="strength-dialog-title">경험으로 보여주는 강점</h2><button class="close-button" id="close-strengths" type="button" aria-label="강점 상세 화면 닫기">닫기</button></div>
+      <div class="experience"><h3>1. 낯선 사람에게 먼저 다가가는 친화력</h3><dl class="sar"><dt>상황</dt><dd>SKT Aleph 교육을 처음 시작했을 때, 교육생들이 서로를 알지 못해 교실 분위기가 어색했습니다.</dd><dt>행동</dt><dd>옆자리에 앉은 교육생에게 먼저 밝게 인사하고 사소한 질문을 건넸습니다. 대화를 이어가며 서로의 기본적인 정보와 교육에 관한 궁금한 점을 자연스럽게 나누었습니다.</dd><dt>결과</dt><dd>이후에는 교육 정보와 어려운 점을 편하게 공유하고, 필요한 순간에는 서로 도움을 주고받는 관계가 되었습니다.</dd></dl></div>
+      <div class="experience"><h3>2. 도움이 필요한 사람을 지나치지 않는 배려심</h3><dl class="sar"><dt>상황</dt><dd>대중교통에서 어르신이 서 계시거나, 정류장에서 목적지까지 가는 방법을 몰라 어려움을 겪는 모습을 마주칠 때가 있습니다.</dd><dt>행동</dt><dd>먼저 다가가 자리를 양보하거나 어떤 도움이 필요한지 여쭤봅니다. 길을 안내해야 할 때는 이동 경로와 교통편을 직접 검색해 확인할 수 있는 범위까지 설명해 드립니다.</dd><dt>결과</dt><dd>어르신이 자리에 앉아 편하게 이동하거나, 안내받은 경로를 확인하고 목적지로 향하시는 모습을 볼 수 있었습니다.</dd></dl></div>
+      <div class="experience"><h3>3. 약속한 목표를 꾸준히 이어가는 책임감과 끈기</h3><dl class="sar"><dt>상황</dt><dd>함께 교육받는 분의 권유로 SKCT를 같이 준비하기로 했습니다. 당시에는 Aleph 교육과 학교 수업 등 해야 할 일이 많았고, 공부하는 동안 수면 부족과 발가락 부상까지 겹쳤습니다.</dd><dt>행동</dt><dd>공부를 결정한 당일에 문제집을 구입하고 바로 준비를 시작했습니다. 서로 학습 계획을 세우고 진행 상황을 확인했으며, 어려운 문제와 더 빠른 풀이 방법을 함께 고민하면서 꾸준히 공부했습니다.</dd><dt>결과</dt><dd>처음에는 제한 시간 안에 풀지 못했던 수열추리 영역을 실제 SKCT에서는 시간 안에 모두 푸는 성장을 이루었습니다.</dd></dl></div>
+      <aside class="evidence" aria-label="강점과 소개 항목의 연결 근거"><strong>공개 가능한 근거 · 기존 소개와의 연결</strong><p><b>성격</b>에서 말한 ‘마음먹은 일은 끝까지 해내려는 모습’은 책임감과 끈기로 이어집니다. <b>MBTI</b>에서 말한 ‘주변을 세심하게 살피고 책임감을 중요하게 생각하는 모습’은 친화력, 배려심, 책임감과 끈기로 이어집니다.</p></aside>
+    </div>
+  </dialog>
+  <footer><div class="wrap"><strong>공개하지 않는 정보: 연락처 · 주소 · 생년월일</strong><span>이 페이지에는 연락처, 주소, 생년월일 등 민감한 개인정보를 공개하지 않습니다.</span></div></footer>
+  <script>
+    const strengthDialog=document.getElementById('strength-dialog');
+    const openStrengths=document.getElementById('open-strengths');
+    const closeStrengths=document.getElementById('close-strengths');
+    openStrengths.addEventListener('click',()=>strengthDialog.showModal());
+    closeStrengths.addEventListener('click',()=>strengthDialog.close());
+    strengthDialog.addEventListener('click',event=>{if(event.target===strengthDialog)strengthDialog.close();});
+    strengthDialog.addEventListener('close',()=>openStrengths.focus());
+  </script>
+</body>
+</html>
