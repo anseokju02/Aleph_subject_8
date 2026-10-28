@@ -74,10 +74,10 @@ export default function PrivateSpace() {
     } finally { setBusy(false); }
   }
 
-  function register() {
+  function register(device: "default" | "phone" = "default") {
     void run(async () => {
       if (!window.PublicKeyCredential) throw new Error("이 브라우저는 패스키를 지원하지 않습니다.");
-      const options = await api("register-options", { name });
+      const options = await api("register-options", { name, device });
       const response = await startRegistration({
         optionsJSON: options.options as PublicKeyCredentialCreationOptionsJSON,
       });
@@ -170,7 +170,7 @@ export default function PrivateSpace() {
                   onChange={(event) => setName(event.target.value)}
                   placeholder="예: 내 노트북" autoComplete="off" />
                 <button className="private-primary" disabled={busy || name.trim().length < 2}
-                  onClick={register}>첫 패스키 등록</button>
+                  onClick={() => register()}>첫 패스키 등록</button>
               </>
             ) : (
               <>
@@ -221,11 +221,14 @@ export default function PrivateSpace() {
                 ))}
               </ul>
               <div className="private-add">
-                <label htmlFor="another-passkey-name">다른 기기 또는 브라우저의 패스키 이름</label>
+                <label htmlFor="another-passkey-name">새 패스키 이름</label>
+                <p className="private-add-help">첫 패스키가 Google 비밀번호 관리자에 있다면 다른 저장소를 선택하세요. 휴대전화 버튼은 휴대전화 등록 화면을 우선 요청합니다. 기기에 따라 선택 화면이 다를 수 있습니다.</p>
                 <div><input id="another-passkey-name" value={name} maxLength={40}
                   onChange={(event) => setName(event.target.value)} placeholder="예: 내 휴대전화" />
                   <button className="private-primary" disabled={busy || name.trim().length < 2}
-                    onClick={register}>패스키 추가</button></div>
+                    onClick={() => register("phone")}>휴대전화로 추가</button></div>
+                <button className="private-outline private-add-other" disabled={busy || name.trim().length < 2}
+                  onClick={() => register()}>다른 방법으로 추가</button>
               </div>
             </section>
             <section className="private-panel" aria-labelledby="audit-heading">
