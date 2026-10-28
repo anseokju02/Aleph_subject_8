@@ -92,6 +92,8 @@
 .private-add{border-top:1px solid var(--line);padding-top:10px}
 .private-add>div{display:flex;align-items:center;gap:10px}
 .private-add .private-primary{margin-top:0;white-space:nowrap}
+.private-add-help{color:var(--muted);font-size:.9rem;line-height:1.6;margin:6px 0 14px}
+.private-add .private-add-other{margin-top:10px}
 .audit-list li{display:grid;grid-template-columns:180px 140px 1fr;gap:8px;padding:10px 0;border-top:1px solid var(--line);font-size:.92rem}
 .audit-list time{color:var(--muted)}
 .audit-list b{color:var(--blue)}
