@@ -102,6 +102,7 @@ export async function POST(request: Request) {
         userDisplayName: "Seok Ju",
         attestationType: "none",
         authenticatorSelection: { residentKey: "required", userVerification: "required" },
+        preferredAuthenticatorType: body.device === "phone" ? "remoteDevice" : undefined,
         supportedAlgorithmIDs: [-7, -257],
         excludeCredentials: keys.map(({ id, transports }) => ({
           id, transports: JSON.parse(transports) as string[],
