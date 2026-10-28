@@ -5,7 +5,7 @@ export const CHALLENGE_COOKIE = "p8_challenge";
 const PUBLIC_HOST = "persona.anseokju02.chatgpt.site";
 const SESSION_LIFETIME = 12 * 60 * 60 * 1000;
 
-type Runtime = { DB?: D1Database; OWNER_ACCOUNT_USER_ID?: string };
+type Runtime = { DB?: D1Database; OWNER_ACCOUNT_EMAIL?: string };
 
 export function database(): D1Database {
   const db = (env as unknown as Runtime).DB;
@@ -36,10 +36,14 @@ export function sameOrigin(request: Request): boolean {
 }
 
 export function isOwnerPlatformUser(request: Request): boolean {
-  const configured = (env as unknown as Runtime).OWNER_ACCOUNT_USER_ID;
+  const configured = (env as unknown as Runtime).OWNER_ACCOUNT_EMAIL;
+  const userId = request.headers.get("oai-authenticated-user-id");
+  const email = request.headers.get("oai-authenticated-user-email");
   return Boolean(
     configured &&
-      request.headers.get("oai-authenticated-user-id") === configured,
+      userId &&
+      email &&
+      email.toLowerCase() === configured.toLowerCase(),
   );
 }
 
